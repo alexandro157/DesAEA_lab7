@@ -11,7 +11,7 @@ namespace Data
 {
     public class ProductDataAccess
     {
-        private string connectionString = "Data Source=LAB1504-17\\SQLEXPRESS;Initial Catalog=Tecsup2023DB;User ID=usertecsup;Password=123456"; 
+        private string connectionString = "Data Source=LAPTOP-5AIC5OBP\\SQLEXPRESS;Initial Catalog=FacturaDB;User ID=usertecsup;Password=123456" ; 
         public List<Product> GetProductsByName(string productName)
         {
             List<Product> products = new List<Product>();

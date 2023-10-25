@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data;
 using Entity;
+using Buisnes;
 
 namespace Presentacion
 {
@@ -15,12 +16,20 @@ namespace Presentacion
             Console.Write("Ingrese el nombre del producto a buscar: ");
             string productName = Console.ReadLine();
 
-            ProductDataAccess productDataAccess = new ProductDataAccess();
-            List<Product> products = productDataAccess.GetProductsByName(productName);
+            ProductBusiness productBusiness = new ProductBusiness(); // Crea una instancia de la capa de negocios
+            List<Product> products = productBusiness.ListProductsByName(productName); // Utiliza la función de la capa de negocios
 
-            foreach (Product product in products)
+            if (products.Count == 0)
             {
-                Console.WriteLine($"ID: {product.ProductId}, Nombre: {product.Name}, Precio: {product.Price:C}, Stock: {product.Stock}");
+                Console.WriteLine("No se encontraron productos con ese nombre.");
+            }
+            else
+            {
+                Console.WriteLine("Productos encontrados:");
+                foreach (Product product in products)
+                {
+                    Console.WriteLine($"ID: {product.ProductId}, Nombre: {product.Name}, Precio: {product.Price:C}, Stock: {product.Stock}");
+                }
             }
         }
     }
